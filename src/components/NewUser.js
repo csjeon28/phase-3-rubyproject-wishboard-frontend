@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+
 
 const NewUser = () => {
-
+    const { push } = useHistory()
     const [postNewUser, setPostNewUser] = useState({ username: '' })
 
     const fetchNewUser = (postNewUser) => {
@@ -37,10 +38,12 @@ const NewUser = () => {
                     type='text'
                     placeholder='Create a New Username'
                 ></input>
-                <button type='submit'>Create User</button>
-                <h2 className='newuser-account'>Already on My-Wish-Board?</h2>
-                <Link to='/loguser'>Sign in</Link>
+                <button type='submit' onClick={() => push('/boards')}>Create User</button>
             </form>
+            <div>
+                <h2 className='newuser-account'>Already signed up?</h2>
+                <Link to='/loguser'>Sign in</Link>
+            </div>
         </div >
     )
 }
