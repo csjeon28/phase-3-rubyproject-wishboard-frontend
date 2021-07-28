@@ -10,7 +10,6 @@ function App() {
   const [username, setUsername] = useState('')
   const [user, setUser] = useState({})
   const [boards, setBoards] = useState([])
-  // const [wishes, setWishes] = useState([])
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -19,7 +18,6 @@ function App() {
         .then(data => {
           setUser(data.user)
           setBoards(data.userBoards)
-          // setWishes(data.userWishes)
         })
     }
     fetchUsers()
@@ -31,35 +29,32 @@ function App() {
     setBoards(updatedBoards)
   }
 
-  // const updateWishes = (id) => {
-  //   const updatedWishes = wishes.filter(w => w.id !== id)
-  //   setWishes(updatedWishes)
-  // }
-
   return (
     <div className='app'>
       <div className='app-header'>
-        <h1>My Wish Board</h1>
+        <Router>
+          <div>
+            <ul className='app-navbar'>
+              <li><Link to='/home' className='app-navbar-link'>Home</Link></li>
+              <li><Link to='/loguser' className='app-navbar-link'>Log-In</Link>   /   <Link to='/newuser' className='app-navbar-link'>New User</Link></li>
+            </ul>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/home' component={Home} />
+              <Route exact path='/newuser' component={NewUser} />
+              <Route exact path='/loguser'>
+                <LogUser setBoards={setBoards} setUsername={setUsername} user={user} />
+              </Route>
+              <Route exact path='/newuser'>
+                <NewUser />
+              </Route>
+              <Route exact path='/boards'>
+                <Board updateBoards={updateBoards} boards={boards} username={username} />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </div>
-      <Router>
-        <div>
-          <ul className='app-navbar'>
-            <li><Link to='/home' className='app-navbar-link'>Home</Link></li>
-            <li><Link to='/loguser' className='app-navbar-link'>Log User</Link></li>
-            <li><Link to='/wishboard' className='app-navbar-link'>Wish Board</Link></li>
-          </ul>
-          <Switch>
-            <Route exact path='/' component={NewUser} />
-            <Route exact path='/home' component={Home} />
-            <Route exact path='/loguser'>
-              <LogUser setUsername={setUsername} user={user} />
-            </Route>
-            <Route exact path='/boards'>
-              <Board updateBoards={updateBoards} boards={boards} username={username} />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
     </div>
   )
 
