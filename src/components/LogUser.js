@@ -36,7 +36,7 @@ const LogUser = ({ setUsername }) => {
     return (
         <div className='loguser'>
             <form onSubmit={handleSubmit}>
-                <h3>Log-In to Your Wish Board</h3>
+                <h3>Log-In to Your WishBoard</h3>
                 <input
                     onChange={handleChange}
                     name='username'
@@ -48,7 +48,7 @@ const LogUser = ({ setUsername }) => {
                 <ExistingUsers />
             </form>
             <div>
-                <h3 className='loguser-create-account'>Create a new user?</h3>
+                <h3 className='loguser-create-account'>New to WishBoard?</h3>
                 <Link to='/newuser'>Sign Up</Link>
             </div>
         </div>
