@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 // import ExistingUserList from './ExistingUserList'
 
 const LogUser = ({ setUsername }) => {
@@ -36,7 +36,6 @@ const LogUser = ({ setUsername }) => {
     return (
         <div className='loguser'>
             <form onSubmit={handleSubmit}>
-                <h3>Log-In to Your WishBoard</h3>
                 <h5>Please use at least 4 characters</h5>
                 <input
                     onChange={handleChange}
@@ -45,15 +44,14 @@ const LogUser = ({ setUsername }) => {
                     logusername='logusername'
                     placeholder='Enter Your Username'
                 ></input>
-                {/* make sure to get boards component working so the post requests work for app. commented it out for now to check if its working*/}
                 {/* <button type='submit' disabled={logusername.length < 4} onClick={() => push('/boards')}>Sign In</button> */}
                 <button type='submit' disabled={logusername.length < 4} >Sign In</button>
                 {/* <ExistingUserList /> */}
             </form>
-            <div>
+            {/* <div>
                 <h3 className='loguser-create-account'>New to WishBoard?</h3>
                 <Link to='/newuser'>Sign Up</Link>
-            </div>
+            </div> */}
         </div>
     )
 }
