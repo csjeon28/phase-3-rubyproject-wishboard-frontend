@@ -1,17 +1,18 @@
 import React from 'react'
-import NewUser from './NewUser'
+// import LogUser from './LogUser'
+import { useHistory } from 'react-router'
 
 const Home = () => {
 
+    const { push } = useHistory()
+
     return (
         <div>
-            <header className='home-container'>
-                <h1>My Wish Board</h1>
-                <div className='home-flex-row'>
-                    <div className='home-flex-large'>
-                        <h2>New User</h2>
-                        <NewUser />
-                    </div>
+            <header className='home'>
+                <h1>My WishBoard</h1>
+                <div className='home-row'>
+                    {/* <LogUser /> */}
+                    <button onClick={() => push('/loguser')}>Enter</button>
                 </div>
             </header>
         </div>
