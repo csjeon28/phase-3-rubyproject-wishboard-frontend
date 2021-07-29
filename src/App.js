@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Home from '../src/components/Home'
 import LogUser from '../src/components/LogUser'
 import Board from '../src/components/Board'
-import NewUser from '../src/components/NewUser'
+import Wishes from '../src/components/Wishes'
 
-function App() {
+const App = () => {
   const [username, setUsername] = useState('')
+  // const [boardadd, setBoardadd] = useState('')
   const [user, setUser] = useState({})
   const [boards, setBoards] = useState([])
 
@@ -23,41 +24,38 @@ function App() {
     fetchUsers()
   }, [username])
 
-
-  const updateBoards = (id) => {
-    const updatedBoards = boards.filter(b => b.id !== id)
-    setBoards(updatedBoards)
-  }
+  // const updateBoards = (id) => {
+  //   const updatedBoards = boards.filter(b => b.id !== id)
+  //   setBoards(updatedBoards)
+  // }
 
   return (
     <div className='app'>
-      <div className='app-header'>
-        <Router>
-          <div>
-            <ul className='app-navbar'>
-              <li><Link to='/home' className='app-navbar-link'>Home</Link></li>
-              <li><Link to='/loguser' className='app-navbar-link'>Log-In</Link>   /   <Link to='/newuser' className='app-navbar-link'>New User</Link></li>
-            </ul>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/home' component={Home} />
-              <Route exact path='/newuser' component={NewUser} />
-              <Route exact path='/loguser'>
-                <LogUser setBoards={setBoards} setUsername={setUsername} user={user} />
-              </Route>
-              <Route exact path='/newuser'>
-                <NewUser />
-              </Route>
-              <Route exact path='/boards'>
-                <Board updateBoards={updateBoards} boards={boards} username={username} />
-              </Route>
-            </Switch>
+      <Router>
+        <div>
+          <div className='app-navbar'>
+            <Link to='/home' className='app-navbar-link'>Home</Link> -
+            <Link to='/loguser' className='app-navbar-link'>Log-In</Link>
           </div>
-        </Router>
-      </div>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/home' component={Home} />
+            <Route exact path='/loguser'>
+              <LogUser setBoards={setBoards} setUsername={setUsername} user={user} />
+            </Route>
+            <Route exact path='/boards'>
+              <Board boards={boards} username={username} />
+              {/* <Board updateBoards={updateBoards} boards={boards} username={username} /> */}
+              {/* <Board setBoardadd={setBoardadd} boardadd={boardadd} boards={boards} username={username} /> */}
+            </Route>
+            <Route exact path='/wishes'>
+              <Wishes />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   )
-
 }
 
 export default App
