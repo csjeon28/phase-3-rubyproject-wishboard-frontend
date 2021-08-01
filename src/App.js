@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Home from '../src/components/Home'
 import LogUser from '../src/components/LogUser'
 import Board from '../src/components/Board'
-
 const App = () => {
   const [username, setUsername] = useState('')
   const [user, setUser] = useState({})
+  const [boards, setBoards] = useState([])
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -15,6 +15,7 @@ const App = () => {
         .then(resp => resp.json())
         .then(resp => {
           setUser(resp.data.user)
+          setBoards(resp.data.userBoards)
         })
     }
     fetchUsers()
@@ -35,7 +36,7 @@ const App = () => {
               <LogUser setUsername={setUsername} user={user} />
             </Route>
             <Route exact path='/boards'>
-              <Board username={username} />
+              <Board boards={boards} setBoards={setBoards} username={username} />
             </Route>
           </Switch>
         </div>
