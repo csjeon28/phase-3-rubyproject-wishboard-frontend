@@ -1,85 +1,120 @@
+body {
+  height: 100%;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/50598/concrete-wall-background.jpg) center center fixed;
+  background-size: cover;
+}
+/* 
+.home {
+
+} */
+
 .app {
   text-align: center;
   height: 150px;
   padding: 20px;
 }
 
+.app-navbar {
+  padding: 0 20px;
+  min-height: 9vh;
+  background: #1c20222c;
+  display: flex;
+  align-items: center;
+  border-radius: 20px 0px 20px 0px;
+}
+
+.app-navbar-link {
+  padding: 0 20px;
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+}
+
 .board-tile {
   height: 300px;
   width: 300px;
   margin: 10px;
-  border: 5px solid rgb(175, 175, 117);
-  background: local rgb(44, 41, 41);
   float: left;
   font-size: 20px;
   text-align: center;
   color: antiquewhite;
   font-weight: 700;
+  padding: 20px;
+	border: tan solid 12px;
+	border-top: #bda27e solid 12px;
+	border-left: #b19876 solid 12px;
+	border-bottom: #c9ad86 solid 12px;
+	box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #c2a782, 0px 0px 0px 4px #a58e6f, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+	background-image: radial-gradient( circle at left 30%, rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3) 80px, rgba(34, 34, 34, 0.5) 100px, rgba(51, 51, 51, 0.5) 160px, rgba(51, 51, 51, 0.5)), linear-gradient( 215deg, transparent, transparent 100px, #222 260px, #222 320px, transparent), radial-gradient( circle at right, #111, rgba(51, 51, 51, 1));
+	background-color: #333;
 }
 
 .board-add-button {
   background: rgba(1, 1, 31, 0.596);
   color: white;
-  border: none;
+  border-radius: 0px 5px 0px 5px;
   font-size: 18px;
   cursor: pointer;
-  margin-right: 10px;
-  margin-left: 10px;
   padding:10px;
 }
 
-/* //fix below css/// */
-
-.wish-tile {
-  height: 150px;
-  width: 150px;
-  margin: 10px;
-  background: lightyellow;
-  float: left;
-  font-size: 11px;
-  text-align: left;
+.wishadd {
+  text-align: center;
 }
 
-.wish-add-button {
-  background: rgba(1, 1, 31, 0.596);
+.new-wish-add-button {
+  background: rgba(47, 143, 172, 0.596);
   color: white;
-  border: none;
-  font-size: 18px;
   cursor: pointer;
-  margin-right: 10px;
-  margin-left: 10px;
-  padding:10px;
-}
-
-.input {
-  border: 0;
-  background: none;
-  outline: none;
-  margin-top:10px;
-  width: 140px;
-  font-size: 11px;
-}
-
-.input:focus {
-  border: solid 1px lightgrey;
-}
-
-textarea {
-  resize: none;
-  height: 90px;
-  font-size: 11px;
+  margin-right: 20px;
+  font-size: 18px;
+  padding: 0.6em;
+  border-radius: 0px 5px 0px 5px;
 }
 
 .wish-delete-button {
-  visibility: hidden;
-  float: right;
-  margin: 5px;
-  font-size: 14px;
   cursor: pointer;
-  color: rgb(55, 22, 99);
+  background-color: gray;
+  font-size: 1em;
+  padding: 0.7em;
+  border-radius: 0px 5px 5px 0px;
+  font-size: 0.6em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
 }
 
-.wish-tile:hover .wish-delete-button {
-  visibility: visible;
+.wish-delete-button:hover {
+  color: rgb(172, 41, 91);
 }
 
+.wish-add-form {
+  position: absolute;
+  cursor: move;
+  color: black;
+  background-color: white;
+  max-width: 215px;
+  overflow-wrap: break-word;
+  border-radius: 5px;
+  padding: 1em;
+  margin: auto;
+  user-select: none;
+}
+
+.new-board-input {
+  border-radius: 5px 0px 0px 5px;
+  color: white;
+  font-size: 1.2em;
+  background-color: rgb(44, 41, 41);
+  padding: 0.5em;
+}
+
+.new-wish-input {
+  border-radius: 5px 0px 0px 5px;
+  color: white;
+  font-size: 1.2em;
+  background-color: rgba(29, 89, 107, 0.596);
+  padding: 0.5em;
+}
