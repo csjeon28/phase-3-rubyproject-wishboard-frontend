@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 // import { useHistory } from 'react-router-dom'
+import WishAdd from './WishAdd'
 
 const BoardAdd = () => {
     // const history = useHistory()
@@ -14,12 +15,11 @@ const BoardAdd = () => {
             headers: { 'Content-Type': 'application/json', 'Accepts': 'application/json' },
             body: JSON.stringify(addBoard)
         }
-        fetch('http://localhost:9292/boards', postBoard)
+        fetch('http://localhost:9292/boards/', postBoard)
             .then(resp => resp.json())
             .then(data => console.log(data))
             .catch(error => console.log(error))
     }
-    console.log(addBoard)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -39,13 +39,15 @@ const BoardAdd = () => {
         <div className='boardadd'>
             <form onSubmit={handleSubmit}>
                 <input
+                    className='new-board-input'
                     onChange={handleInput}
                     name='name'
                     type='text'
-                    placeholder='Enter Title'
+                    placeholder='Enter Board Title'
                 />
                 <button className='board-add-button'>Add</button>
             </form>
+            <WishAdd />
         </div>
     )
 }
