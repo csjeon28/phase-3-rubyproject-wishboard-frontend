@@ -9,40 +9,28 @@ const Board = ({ username }) => {
 
     useEffect(() => {
         fetch('http://localhost:9292/boards/')
-            .then(response => response.json())
-            .then(response => setBoardList(response.data.board))
+            .then(resp => resp.json())
+            .then(resp => {
+                setBoardList(resp.data.board)
+            })
     }, [])
-
-    // const [boardname, setBoardname] = useState('')
-    // const [boards, setBoards] = useState({})
-
-    // useEffect(() => {
-    //     const fetchBoards = () => {
-    //         fetch('http://localhost:9292/boards')
-    //             .then(resp => resp.json())
-    //             .then(data => {
-    //                 setBoardList(data)
-    //                 setBoards(data.board)
-    //             })
-    //     }
-    //     fetchBoards()
-    // }, [boardname])
 
     return (
         <div className='board'>
-            <h1>My Wish Boards</h1>
-            <h3>User: {username}</h3>
+            <h1>Wish Boards</h1>
+            <div className='board-username'>
+                <h3>User: {username}</h3>
+                <button className='board-logout-button' onClick={() => push('/home')}>Log Out</button>
+            </div>
             <div>
                 <BoardAdd />
                 {boardList.map((board, index) => {
                     return (
-                        <button
-                            onClick={() => push('/wishes')}
+                        <div
                             className='board-tile'
-                            type='button'
                             key={index}>
                             {board.name}
-                        </button>
+                        </div>
                     )
                 })}
             </div>
