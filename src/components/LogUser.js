@@ -27,7 +27,6 @@ const LogUser = ({ setUsername }) => {
     }
 
     const handleChange = (e) => {
-        e.preventDefault()
         setLogusername(e.target.value)
         setSubmittedUser({ ...submittedUser, [e.target.name]: e.target.value })
     }
