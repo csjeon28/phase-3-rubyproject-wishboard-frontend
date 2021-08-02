@@ -10,7 +10,7 @@ const Home = () => {
             <header className='home'>
                 <h1>My WishBoard</h1>
                 <div className='home-row'>
-                    <button onClick={() => push('/loguser')}>Enter</button>
+                    <button className='home-button' onClick={() => push('/loguser')}>Enter</button>
                 </div>
             </header>
         </div>
