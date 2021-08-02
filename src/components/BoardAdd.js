@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 // import { useHistory } from 'react-router-dom'
 import WishAdd from './WishAdd'
 
@@ -6,8 +6,9 @@ const BoardAdd = () => {
     // const history = useHistory()
     // const { push } = useHistory()
 
-    // const [logBoard, setLogBoard] = useState('')
     const [addBoard, setAddBoard] = useState(({ name: '' }))
+    const [, updateState] = useState()
+    const forceUpdate = useCallback(() => updateState({}), [])
 
     const fetchAddBoard = (addBoard) => {
         const postBoard = {
@@ -24,13 +25,10 @@ const BoardAdd = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         fetchAddBoard(addBoard)
-        // setLogBoard(logBoard)
-        // history.push(`/boards`)
     }
 
     const handleInput = (e) => {
-        // setLogBoard(e.target.value)
-        // e.preventDefault()
+        e.preventDefault()
         const { name, value } = e.target
         setAddBoard({ ...addBoard, [name]: value })
     }
@@ -45,7 +43,7 @@ const BoardAdd = () => {
                     type='text'
                     placeholder='Enter Board Title'
                 />
-                <button className='board-add-button'>Add</button>
+                <button onClick={() => forceUpdate()} className='board-add-button'>Add</button>
             </form>
             <WishAdd />
         </div>
