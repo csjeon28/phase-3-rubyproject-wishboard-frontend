@@ -27,6 +27,7 @@ const LogUser = ({ setUsername }) => {
     }
 
     const handleChange = (e) => {
+        e.preventDefault()
         setLogusername(e.target.value)
         setSubmittedUser({ ...submittedUser, [e.target.name]: e.target.value })
     }
@@ -36,13 +37,14 @@ const LogUser = ({ setUsername }) => {
             <form onSubmit={handleSubmit}>
                 <h5>Please use at least 4 characters</h5>
                 <input
+                    className='loguser-input'
                     onChange={handleChange}
                     name='username'
                     type='text'
                     logusername='logusername'
                     placeholder='Enter Your Username'
                 ></input>
-                <button type='submit' disabled={logusername.length < 4} >Sign In</button>
+                <button className='loguser-button' type='submit' disabled={logusername.length < 4} >Sign In</button>
             </form>
         </div>
     )
