@@ -15,7 +15,7 @@ const LogUser = ({ setUsername }) => {
         }
         fetch('http://localhost:9292/users', postUser)
             .then(resp => resp.json())
-            .then(data => console.log(data))
+            .then(resp => console.log(resp))
             .catch(error => console.log(error))
     }
 
@@ -27,8 +27,9 @@ const LogUser = ({ setUsername }) => {
     }
 
     const handleChange = (e) => {
-        setLogusername(e.target.value)
-        setSubmittedUser({ ...submittedUser, [e.target.name]: e.target.value })
+        const { name, value } = e.target
+        setLogusername(value)
+        setSubmittedUser({ ...submittedUser, [name]: value })
     }
 
     return (
