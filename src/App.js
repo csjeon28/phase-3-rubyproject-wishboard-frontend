@@ -1,21 +1,35 @@
+// import React, { useState } from 'react'
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Home from '../src/components/Home'
 import LogUser from '../src/components/LogUser'
 import Board from '../src/components/Board'
+
 const App = () => {
   const [username, setUsername] = useState('')
   const [user, setUser] = useState({})
   const [boards, setBoards] = useState([])
 
+
+  // const fetchUsers = () => {
+  //   fetch(`http://localhost:9292/users/search?q=${username}`)
+  //     .then(resp => resp.json())
+  //     .then(resp => {
+  //       setUser(resp.user)
+  //       console.log(resp)
+  //       setBoards(resp.userBoards)
+  //     })
+  // }
+  // fetchUsers()
   useEffect(() => {
     const fetchUsers = () => {
       fetch(`http://localhost:9292/users/search?q=${username}`)
         .then(resp => resp.json())
         .then(resp => {
-          setUser(resp.data.user)
-          setBoards(resp.data.userBoards)
+          setUser(resp.user)
+          console.log(resp)
+          setBoards(resp.userBoards)
         })
     }
     fetchUsers()
