@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
@@ -11,17 +10,6 @@ const App = () => {
   const [user, setUser] = useState({})
   const [boards, setBoards] = useState([])
 
-
-  // const fetchUsers = () => {
-  //   fetch(`http://localhost:9292/users/search?q=${username}`)
-  //     .then(resp => resp.json())
-  //     .then(resp => {
-  //       setUser(resp.user)
-  //       console.log(resp)
-  //       setBoards(resp.userBoards)
-  //     })
-  // }
-  // fetchUsers()
   useEffect(() => {
     const fetchUsers = () => {
       fetch(`http://localhost:9292/users/search?q=${username}`)
