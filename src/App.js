@@ -14,10 +14,9 @@ const App = () => {
     const fetchUsers = () => {
       fetch(`http://localhost:9292/users/search?q=${username}`)
         .then(resp => resp.json())
-        .then(resp => {
-          setUser(resp.user)
-          console.log(resp)
-          setBoards(resp.userBoards)
+        .then(data => {
+          setUser(data.user.username)
+          setBoards(data.userBoards)
         })
     }
     fetchUsers()
