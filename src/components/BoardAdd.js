@@ -13,7 +13,8 @@ const BoardAdd = ({ username, setBoards, boards }) => {
         }
         fetch('http://localhost:9292/boards/', postBoard)
             .then(resp => resp.json())
-            .then(resp => setBoards([...boards, resp]))
+            .then(resp => setBoards([...boards, resp.board]))
+            // .then(resp => console.log(resp))
             .catch(error => console.log(error))
     }
 
