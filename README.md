@@ -65,7 +65,7 @@ Add wishes ---------=>-------- post "/wishes"
 ### Set up database
 
 :user ------------ :wish ------------ :board<br/>
-:username -------- :title ----------- :name<br/>  
+:username -------- :title ----------- :name<br/>
 :timestamps ------ :description ----- :user_id<br/>
 ------------------ :board_id -------- :timestamps<br/>
 ------------------ :user_id ---------------------<br/>
